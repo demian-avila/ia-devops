@@ -20,6 +20,7 @@ def main():
         with open(file_name, 'w') as f:
             f.write(terraform_code)
         print(f"Terraform code saved to {file_name}")
+        print("you can now go to iac folder and run 'terraform plan' and 'terraform apply' to deploy resources into AWS")
 
 if __name__ == "__main__":
     main()

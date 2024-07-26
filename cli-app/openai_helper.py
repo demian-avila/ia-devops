@@ -11,11 +11,11 @@ def get_terraform_code(prompt):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"""role": "system", "content": "You are a helpful assistant specialized in generating Terraform scripts for AWS.
-                    You follow best practices and standards so everything in your scripts is parameterize and all variables have proper descriptions, types and defaults"""},
+            {"role": "system", "content": "You are a helpful assistant specialized in generating Terraform scripts for AWS v5.59.0."
+                    "You follow best practices and standards so everything in your terraform scripts is parameterize and all variables mandatory have descriptions, types and defaults. The script must be enough to deploy to terraform, so it need to include provider block and everything to just execute terraform plan and apply"},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=500,
+        max_tokens=800,
         temperature=0.5,
     )
 
@@ -28,4 +28,5 @@ def extract_code_block(response):
     if match:
         return match.group(1).strip()
     else:
+        print(response)
         return "No valid Terraform code block found in the response."
