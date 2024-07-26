@@ -38,3 +38,7 @@ terraform.rc
 
 # Mac files
 **.DS_Store**
+.terraform.lock.hcl
+.terraform/**
+.terraform
+terraform.tfstate
